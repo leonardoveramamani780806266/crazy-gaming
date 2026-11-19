@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Gaming</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>🎮 CRAZY <span>GAMING</span></h1>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#juegos">Juegos</a>
+            <a href="#noticias">Noticias</a>
+            <a href="#favoritos">Favoritos</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <h2>Bienvenido a Crazy Gaming</h2>
+            <p>Explora. Descubre. Juega.</p>
+            <a href="#juegos" class="boton">Explorar juegos</a>
+        </section>
+
+        <section id="juegos">
+            <h2>Juegos destacados</h2>
+
+            <input
+                type="text"
+                id="buscador"
+                placeholder="Buscar videojuegos..."
+            >
+
+            <div class="filtros">
+                <button onclick="filtrarJuegos('Todos')">Todos</button>
+                <button onclick="filtrarJuegos('Acción')">Acción</button>
+                <button onclick="filtrarJuegos('RPG')">RPG</button>
+                <button onclick="filtrarJuegos('Aventura')">Aventura</button>
+            </div>
+
+            <div id="lista-juegos" class="contenedor"></div>
+        </section>
+
+        <section id="noticias">
+            <h2>Últimas noticias</h2>
+
+            <div class="contenedor">
+                <article class="tarjeta">
+                    <h3>GTA VI</h3>
+                    <p>Descubre novedades del mundo de GTA.</p>
+                </article>
+
+                <article class="tarjeta">
+                    <h3>PlayStation</h3>
+                    <p>Conoce los próximos lanzamientos.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="favoritos">
+            <h2>Mis favoritos</h2>
+            <div id="lista-favoritos" class="contenedor"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Crazy Gaming</p>
+    </footer>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>

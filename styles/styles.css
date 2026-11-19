@@ -1,0 +1,150 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0717;
+    color: white;
+}
+
+header {
+    background: #170f29;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h1 span {
+    color: #b56cff;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #b56cff;
+}
+
+section {
+    padding: 50px 8%;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #d18bff;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #37115c, #111028);
+}
+
+.hero h2 {
+    font-size: 38px;
+}
+
+.hero p {
+    margin-bottom: 30px;
+}
+
+.boton,
+button {
+    background: #8b35e8;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover,
+.boton:hover {
+    background: #b56cff;
+}
+
+#buscador {
+    padding: 14px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    border: 1px solid #8b35e8;
+    background: #211533;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.tarjeta {
+    background: #201531;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #61318d;
+}
+
+.tarjeta h3 {
+    margin-bottom: 15px;
+}
+
+.tarjeta p {
+    margin-bottom: 15px;
+    color: #d3c4e3;
+}
+
+footer {
+    background: #170f29;
+    text-align: center;
+    padding: 25px;
+}
+
+@media (max-width: 600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    section {
+        padding: 35px 5%;
+    }
+}
