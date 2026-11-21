@@ -7,29 +7,53 @@
     <meta name="theme-color" content="#090713">
     <title>CRAZY GAMING | Portal Gamer</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/header.css">
 </head>
 <body>
 
-    <header class="header">
-        <a href="#inicio" class="logo">
-            <span class="logo-icon">🎮</span>
+<header class="header" id="header">
+    <a href="#inicio" class="logo" aria-label="Crazy Gaming - Inicio">
+        <span class="logo-icon">🎮</span>
+        <span class="logo-texto">
             CRAZY <span>GAMING</span>
+        </span>
+    </a>
+
+    <nav class="menu" id="menu" aria-label="Navegación principal">
+        <a href="#inicio" class="activo">
+            <span>⌂</span> Inicio
+        </a>
+        <a href="#juegos">
+            <span>🎮</span> Juegos
+        </a>
+        <a href="#noticias">
+            <span>⚡</span> Noticias
+        </a>
+        <a href="#favoritos">
+            <span>♡</span> Favoritos
+        </a>
+    </nav>
+
+    <div class="header-acciones">
+        <a href="#juegos" class="header-explorar">
+            EXPLORAR <span>↗</span>
         </a>
 
-        <button class="menu-toggle"
-                id="menu-toggle"
-                aria-label="Abrir menú"
-                aria-expanded="false">
-            ☰
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Abrir menú"
+            aria-controls="menu"
+            aria-expanded="false"
+        >
+            <span class="hamburguesa"></span>
+            <span class="hamburguesa"></span>
+            <span class="hamburguesa"></span>
         </button>
+    </div>
+</header>
 
-        <nav id="menu" class="menu">
-            <a href="#inicio" class="activo">Inicio</a>
-            <a href="#juegos">Juegos</a>
-            <a href="#noticias">Noticias</a>
-            <a href="#favoritos">Favoritos</a>
-        </nav>
-    </header>
 
     <main>
         <!-- INICIO -->
