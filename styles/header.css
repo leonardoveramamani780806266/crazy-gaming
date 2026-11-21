@@ -1,0 +1,229 @@
+
+/* CRAZY GAMING - HEADER */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    min-height: 82px;
+    padding: 15px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    background: rgba(9, 7, 19, 0.96);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.35);
+    backdrop-filter: blur(18px);
+}
+
+/* Línea luminosa inferior */
+.header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #a855f7,
+        #32c5ff,
+        transparent
+    );
+    opacity: 0.65;
+}
+
+/* LOGOTIPO */
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Orbitron", Arial, sans-serif;
+    font-weight: 900;
+    font-size: 19px;
+    letter-spacing: 1px;
+}
+
+.header .logo-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #50217c, #211332);
+    border: 1px solid #a855f7;
+    box-shadow: 0 0 18px #a855f744;
+}
+
+.header .logo-texto > span {
+    color: #b66aff;
+    text-shadow: 0 0 16px #a855f777;
+}
+
+/* NAVEGACIÓN */
+
+.header .menu {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.header .menu a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: #bcb3d0;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.header .menu a:hover {
+    color: #ffffff;
+    background: #a855f71c;
+}
+
+.header .menu a.activo {
+    color: #42caff;
+    background: #32c5ff12;
+    box-shadow: inset 0 -2px 0 #32c5ff;
+}
+
+/* BOTÓN EXPLORAR */
+
+.header-acciones {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.header-explorar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 9px;
+    color: white;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    background: linear-gradient(135deg, #a855f7, #6732d8);
+    box-shadow: 0 0 20px #a855f73b;
+    transition: 0.25s ease;
+}
+
+.header-explorar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px #a855f788;
+}
+
+/* BOTÓN HAMBURGUESA */
+
+.header .menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    border: 1px solid #7f48b6;
+    border-radius: 10px;
+    background: #241535;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.hamburguesa {
+    width: 21px;
+    height: 2px;
+    border-radius: 3px;
+    background: #ffffff;
+    transition: 0.25s;
+}
+
+.menu-toggle.abierto .hamburguesa:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.abierto .hamburguesa:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.abierto .hamburguesa:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* TABLET Y CELULAR */
+
+@media (max-width: 1050px) {
+    .header {
+        min-height: 72px;
+        padding: 12px 5%;
+    }
+
+    .header .menu-toggle {
+        display: flex;
+    }
+
+    .header .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 15px 5% 22px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        background: #130c22;
+        border-bottom: 1px solid #a855f7;
+        box-shadow: 0 20px 30px #0008;
+    }
+
+    .header .menu.abierto {
+        display: flex;
+    }
+
+    .header .menu a {
+        width: 100%;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 520px) {
+    .header .logo {
+        font-size: 14px;
+        gap: 8px;
+    }
+
+    .header .logo-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+    }
+
+    .header-explorar {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header *,
+    .header *::before,
+    .header *::after {
+        transition: none !important;
+    }
+}
