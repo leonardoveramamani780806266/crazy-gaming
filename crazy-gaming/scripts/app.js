@@ -1,7 +1,7 @@
 
 // Lista de videojuegos
 
-const juegos = [
+let juegos = [
     {
         id: 1,
         nombre: "Tekken 8",
@@ -141,7 +141,8 @@ document.addEventListener("click", function(evento) {
 
     if (!boton) return;
 
-    const id = Number(boton.dataset.id);
+    
+    const id = boton.dataset.id;
 
     if (favoritos.includes(id)) {
 
@@ -194,5 +195,24 @@ document.querySelectorAll(".header__link").forEach(enlace => {
 
 // Ejecutar funciones iniciales
 
-mostrarJuegos(juegos);
-mostrarFavoritos();
+
+// Cargar videojuegos desde la API
+async function iniciarPagina() {
+
+    listaJuegos.textContent = "Cargando videojuegos...";
+
+    juegos = await obtenerJuegosAPI();
+
+    if (juegos.length === 0) {
+        listaJuegos.textContent =
+            "No se pudieron cargar los videojuegos.";
+        mostrarFavoritos();
+        return;
+    }
+
+    mostrarJuegos(juegos);
+    mostrarFavoritos();
+}
+
+// Iniciar la pagina
+iniciarPagina();

@@ -1,135 +1,66 @@
 
-<!--
-PROYECTO: CRAZY GAMING
-FECHA: 23/11/2026
-AVANCE DE HOY:
-Implementacion de metodologia BEM.
-Organizacion de archivos CSS por componentes.
-Implementacion de etiquetas semanticas.
-Adaptacion a diferentes dispositivos.
--->
+// Crear tarjetas con metodologia BEM
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+function crearTarjeta(juego) {
 
-    <title>CRAZY GAMING</title>
+    const guardado = favoritos.includes(juego.id);
 
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/hero.css">
-    <link rel="stylesheet" href="styles/card.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/responsive.css">
-</head>
+    return `
+        <article class="card ${guardado ? "card--favorito" : ""}">
 
-<body>
-
-    <header class="header">
-
-        <a href="#inicio" class="header__logo">
-            🎮 CRAZY <span>GAMING</span>
-        </a>
-
-        <button class="header__toggle" id="menu-toggle"
-                aria-label="Abrir menú"
-                aria-controls="menu"
-                aria-expanded="false">
-            ☰
-        </button>
-
-        <nav class="header__nav" id="menu">
-            <a href="#inicio" class="header__link">Inicio</a>
-            <a href="#juegos" class="header__link">Juegos</a>
-            <a href="#noticias" class="header__link">Noticias</a>
-            <a href="#favoritos" class="header__link">Favoritos</a>
-        </nav>
-
-    </header>
-
-    <main class="main">
-
-        <section class="hero" id="inicio">
-            <div class="hero__contenido">
-                <h1 class="hero__titulo">
-                    Bienvenido a CRAZY GAMING
-                </h1>
-
-                <p class="hero__descripcion">
-                    Explora el universo de los videojuegos.
-                </p>
-
-                <a href="#juegos" class="hero__boton">
-                    Explorar juegos
-                </a>
-            </div>
-        </section>
-
-        <section class="catalogo" id="juegos">
-
-            <h2 class="catalogo__titulo">
-                Videojuegos destacados
-            </h2>
-
-            <input
-                class="catalogo__buscador"
-                type="search"
-                id="buscador"
-                placeholder="Buscar videojuego..."
-                aria-label="Buscar videojuegos"
+            <img
+                class="card__imagen"
+                src="${juego.imagen}"
+                alt="${juego.nombre}"
+                loading="lazy"
             >
 
-            <div class="catalogo__grid" id="lista-juegos">
-            </div>
+            <div class="card__contenido">
 
-        </section>
-
-        <section class="noticias" id="noticias">
-
-            <h2 class="noticias__titulo">
-                Noticias Gaming
-            </h2>
-
-            <article class="noticia">
-                <h3 class="noticia__titulo">
-                    El universo gaming
+                <h3 class="card__titulo">
+                    ${juego.nombre}
                 </h3>
 
-                <p class="noticia__descripcion">
-                    Descubre novedades y próximos lanzamientos.
+                <p class="card__genero">
+                    Plataforma: ${juego.genero}
                 </p>
-            </article>
 
-        </section>
+                <p class="card__valoracion">
+                    ★ ${juego.valoracion.toFixed(1)} / 5
+                </p>
 
-        <section class="favoritos" id="favoritos">
+                <p class="card__precio">
+                    $${juego.precio} USD
+                </p>
 
-            <h2 class="favoritos__titulo">
-                Mis videojuegos favoritos
-            </h2>
+                <p class="card__precio-original">
+                    $${juego.precioOriginal} USD
+                </p>
 
-            <div class="catalogo__grid" id="lista-favoritos">
+                <span class="card__descuento">
+                    -${juego.descuento}%
+                </span>
+
+                <a
+                    class="card__oferta"
+                    href="${juego.enlace}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Ver oferta
+                </a>
+
+                <button
+                    type="button"
+                    class="card__boton ${guardado ? "card__boton--activo" : ""}"
+                    data-id="${juego.id}"
+                    aria-pressed="${guardado}"
+                >
+                    ${guardado ? "♥ Quitar favorito" : "♡ Añadir favorito"}
+                </button>
+
             </div>
 
-        </section>
-
-    </main>
-
-    <footer class="footer">
-
-        <p class="footer__texto">
-            © 2026 CRAZY GAMING
-        </p>
-
-        <p class="footer__descripcion">
-            Proyecto de Programación Web
-        </p>
-
-    </footer>
-
-    <script src="scripts/app.js" defer></script>
-
-</body>
-</html>
+        </article>
+    `;
+}

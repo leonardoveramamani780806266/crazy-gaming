@@ -83,3 +83,35 @@
 .card__boton--activo {
     background: #a32a69;
 }
+.card__precio {
+    color: #4ade80;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.card__precio-original {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.card__descuento {
+    display: inline-block;
+    background: #166534;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+.card__oferta {
+    display: block;
+    text-align: center;
+    background: #7024c4;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.card__oferta:hover {
+    background: #a855f7;
+}
