@@ -1,176 +1,135 @@
 
+<!--
+PROYECTO: CRAZY GAMING
+FECHA: 23/11/2026
+AVANCE DE HOY:
+Implementacion de metodologia BEM.
+Organizacion de archivos CSS por componentes.
+Implementacion de etiquetas semanticas.
+Adaptacion a diferentes dispositivos.
+-->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#090713">
-    <title>CRAZY GAMING | Portal Gamer</title>
+
+    <title>CRAZY GAMING</title>
+
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/hero.css">
+    <link rel="stylesheet" href="styles/card.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/responsive.css">
 </head>
+
 <body>
 
-<header class="header" id="header">
-    <a href="#inicio" class="logo" aria-label="Crazy Gaming - Inicio">
-        <span class="logo-icon">🎮</span>
-        <span class="logo-texto">
-            CRAZY <span>GAMING</span>
-        </span>
-    </a>
+    <header class="header">
 
-    <nav class="menu" id="menu" aria-label="Navegación principal">
-        <a href="#inicio" class="activo">
-            <span>⌂</span> Inicio
-        </a>
-        <a href="#juegos">
-            <span>🎮</span> Juegos
-        </a>
-        <a href="#noticias">
-            <span>⚡</span> Noticias
-        </a>
-        <a href="#favoritos">
-            <span>♡</span> Favoritos
-        </a>
-    </nav>
-
-    <div class="header-acciones">
-        <a href="#juegos" class="header-explorar">
-            EXPLORAR <span>↗</span>
+        <a href="#inicio" class="header__logo">
+            🎮 CRAZY <span>GAMING</span>
         </a>
 
-        <button
-            type="button"
-            class="menu-toggle"
-            id="menu-toggle"
-            aria-label="Abrir menú"
-            aria-controls="menu"
-            aria-expanded="false"
-        >
-            <span class="hamburguesa"></span>
-            <span class="hamburguesa"></span>
-            <span class="hamburguesa"></span>
+        <button class="header__toggle" id="menu-toggle"
+                aria-label="Abrir menú"
+                aria-controls="menu"
+                aria-expanded="false">
+            ☰
         </button>
-    </div>
-</header>
 
+        <nav class="header__nav" id="menu">
+            <a href="#inicio" class="header__link">Inicio</a>
+            <a href="#juegos" class="header__link">Juegos</a>
+            <a href="#noticias" class="header__link">Noticias</a>
+            <a href="#favoritos" class="header__link">Favoritos</a>
+        </nav>
 
-    <main>
-        <!-- INICIO -->
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-                <span class="etiqueta">⚡ EL UNIVERSO GAMER</span>
+    </header>
 
-                <h1>
-                    TU MUNDO.
-                    <span>TUS JUEGOS.</span>
-                    TUS REGLAS.
+    <main class="main">
+
+        <section class="hero" id="inicio">
+            <div class="hero__contenido">
+                <h1 class="hero__titulo">
+                    Bienvenido a CRAZY GAMING
                 </h1>
 
-                <p>
-                    Descubre videojuegos, explora noticias
-                    y encuentra tu próxima aventura.
+                <p class="hero__descripcion">
+                    Explora el universo de los videojuegos.
                 </p>
 
-                <div class="hero-botones">
-                    <a href="#juegos" class="btn-principal">
-                        EXPLORAR JUEGOS →
-                    </a>
-
-                    <a href="#noticias" class="btn-secundario">
-                        ÚLTIMAS NOTICIAS
-                    </a>
-                </div>
-
-                <div class="hero-stats">
-                    <div>
-                        <strong>04+</strong>
-                        <span>Videojuegos</span>
-                    </div>
-                    <div>
-                        <strong>03</strong>
-                        <span>Categorías</span>
-                    </div>
-                    <div>
-                        <strong>24/7</strong>
-                        <span>Portal gamer</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero-visual" aria-hidden="true">
-                <div class="visual-ring">
-                    <div class="visual-center">🎮</div>
-                </div>
-                <span class="visual-label">NEXT LEVEL GAMING</span>
+                <a href="#juegos" class="hero__boton">
+                    Explorar juegos
+                </a>
             </div>
         </section>
 
-        <!-- JUEGOS -->
-        <section id="juegos" class="seccion">
-            <div class="section-heading">
-                <div>
-                    <span class="subtitulo">DESCUBRE TU PRÓXIMA AVENTURA</span>
-                    <h2>JUEGOS <span>DESTACADOS</span></h2>
-                </div>
-            </div>
+        <section class="catalogo" id="juegos">
+
+            <h2 class="catalogo__titulo">
+                Videojuegos destacados
+            </h2>
 
             <input
+                class="catalogo__buscador"
                 type="search"
                 id="buscador"
-                placeholder="🔍 Buscar videojuegos..."
+                placeholder="Buscar videojuego..."
                 aria-label="Buscar videojuegos"
             >
 
-            <div class="filtros">
-                <button onclick="filtrarJuegos('Todos')">Todos</button>
-                <button onclick="filtrarJuegos('Acción')">Acción</button>
-                <button onclick="filtrarJuegos('RPG')">RPG</button>
-                <button onclick="filtrarJuegos('Aventura')">Aventura</button>
+            <div class="catalogo__grid" id="lista-juegos">
             </div>
 
-            <div id="lista-juegos" class="contenedor"></div>
         </section>
 
-        <!-- NOTICIAS -->
-        <section id="noticias" class="seccion">
-            <span class="subtitulo">MANTENTE INFORMADO</span>
-            <h2>NOTICIAS <span>GAMING</span></h2>
+        <section class="noticias" id="noticias">
 
-            <div class="contenedor">
-                <article class="tarjeta noticia">
-                    <span class="tag">ACTUALIDAD</span>
-                    <h3>El universo de GTA VI</h3>
-                    <p>
-                        Sigue las novedades y anuncios
-                        sobre uno de los juegos más esperados.
-                    </p>
-                </article>
+            <h2 class="noticias__titulo">
+                Noticias Gaming
+            </h2>
 
-                <article class="tarjeta noticia">
-                    <span class="tag">PLAYSTATION</span>
-                    <h3>Próximos lanzamientos</h3>
-                    <p>
-                        Explora los títulos que llegarán
-                        a las consolas y PC.
-                    </p>
-                </article>
+            <article class="noticia">
+                <h3 class="noticia__titulo">
+                    El universo gaming
+                </h3>
+
+                <p class="noticia__descripcion">
+                    Descubre novedades y próximos lanzamientos.
+                </p>
+            </article>
+
+        </section>
+
+        <section class="favoritos" id="favoritos">
+
+            <h2 class="favoritos__titulo">
+                Mis videojuegos favoritos
+            </h2>
+
+            <div class="catalogo__grid" id="lista-favoritos">
             </div>
+
         </section>
 
-        <!-- FAVORITOS -->
-        <section id="favoritos" class="seccion">
-            <span class="subtitulo">TU COLECCIÓN PERSONAL</span>
-            <h2>MIS <span>FAVORITOS</span></h2>
-            <div id="lista-favoritos" class="contenedor"></div>
-        </section>
     </main>
 
-    <footer>
-        <div class="logo">🎮 CRAZY <span>GAMING</span></div>
-        <p>© 2026 Crazy Gaming. Proyecto web académico.</p>
+    <footer class="footer">
+
+        <p class="footer__texto">
+            © 2026 CRAZY GAMING
+        </p>
+
+        <p class="footer__descripcion">
+            Proyecto de Programación Web
+        </p>
+
     </footer>
 
-    <script src="scripts/app.js"></script>
+    <script src="scripts/app.js" defer></script>
+
 </body>
 </html>

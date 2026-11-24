@@ -1,0 +1,49 @@
+
+/* BLOQUE: hero */
+
+.hero {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    background: linear-gradient(
+        120deg,
+        #20103a,
+        #572099,
+        #10091c
+    );
+    border: 1px solid var(--morado);
+    border-radius: 20px;
+    box-shadow: 0 0 25px #a855f733;
+}
+
+/* ELEMENTOS */
+
+.hero__contenido {
+    max-width: 650px;
+}
+
+.hero__titulo {
+    font-size: clamp(32px, 5vw, 52px);
+    margin-bottom: 20px;
+}
+
+.hero__descripcion {
+    color: var(--texto-secundario);
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero__boton {
+    display: inline-block;
+    background: var(--morado);
+    color: white;
+    padding: 14px 25px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.hero__boton:hover {
+    background: var(--morado-oscuro);
+    transform: translateY(-3px);
+}
