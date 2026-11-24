@@ -1,66 +1,290 @@
 
-// Crear tarjetas con metodologia BEM
+<!DOCTYPE html>
 
-function crearTarjeta(juego) {
+<!--
+PROYECTO: CRAZY GAMING
+FECHA: 23/11/2026
 
-    const guardado = favoritos.includes(juego.id);
+AVANCE DE HOY:
+- Implementacion de metodologia BEM.
+- Organizacion modular de archivos CSS.
+- Implementacion de HTML semantico.
+- Consumo de API REST CheapShark.
+- Catalogo dinamico de videojuegos.
+- Visualizacion de precios y descuentos.
+- Sistema de busqueda y favoritos.
+- Adaptacion a computadoras, tablets y celulares.
+-->
 
-    return `
-        <article class="card ${guardado ? "card--favorito" : ""}">
+<html lang="es">
 
-            <img
-                class="card__imagen"
-                src="${juego.imagen}"
-                alt="${juego.nombre}"
-                loading="lazy"
-            >
+<head>
 
-            <div class="card__contenido">
+    <meta charset="UTF-8">
 
-                <h3 class="card__titulo">
-                    ${juego.nombre}
-                </h3>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-                <p class="card__genero">
-                    Plataforma: ${juego.genero}
+    <meta name="description"
+          content="Crazy Gaming: videojuegos, ofertas y noticias gaming.">
+
+    <meta name="theme-color" content="#090713">
+
+    <title>CRAZY GAMING</title>
+
+    <!-- Estilos generales -->
+    <link rel="stylesheet" href="./styles/styles.css">
+
+    <!-- Estilos del encabezado -->
+    <link rel="stylesheet" href="./styles/header.css">
+
+    <!-- Estilos del banner -->
+    <link rel="stylesheet" href="./styles/hero.css">
+
+    <!-- Estilos de las tarjetas -->
+    <link rel="stylesheet" href="./styles/card.css">
+
+    <!-- Estilos del pie de pagina -->
+    <link rel="stylesheet" href="./styles/footer.css">
+
+    <!-- Estilos responsive -->
+    <link rel="stylesheet" href="./styles/responsive.css">
+
+</head>
+
+<body>
+
+    <!-- BLOQUE: ENCABEZADO -->
+
+    <header class="header">
+
+        <a href="#inicio" class="header__logo">
+            🎮 CRAZY <span>GAMING</span>
+        </a>
+
+        <button
+            type="button"
+            class="header__toggle"
+            id="menu-toggle"
+            aria-label="Abrir menu"
+            aria-controls="menu"
+            aria-expanded="false">
+
+            ☰
+
+        </button>
+
+        <nav class="header__nav"
+             id="menu"
+             aria-label="Navegacion principal">
+
+            <a href="#inicio"
+               class="header__link header__link--activo">
+                Inicio
+            </a>
+
+            <a href="#juegos" class="header__link">
+                Juegos y ofertas
+            </a>
+
+            <a href="#noticias" class="header__link">
+                Noticias
+            </a>
+
+            <a href="#favoritos" class="header__link">
+                Favoritos
+            </a>
+
+        </nav>
+
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+
+    <main class="main">
+
+        <!-- BLOQUE: BANNER PRINCIPAL -->
+
+        <section class="hero" id="inicio">
+
+            <div class="hero__contenido">
+
+                <h1 class="hero__titulo">
+                    Bienvenido a CRAZY GAMING
+                </h1>
+
+                <p class="hero__descripcion">
+                    Explora el universo de los videojuegos,
+                    descubre ofertas y encuentra tus juegos
+                    favoritos en un solo lugar.
                 </p>
 
-                <p class="card__valoracion">
-                    ★ ${juego.valoracion.toFixed(1)} / 5
-                </p>
-
-                <p class="card__precio">
-                    $${juego.precio} USD
-                </p>
-
-                <p class="card__precio-original">
-                    $${juego.precioOriginal} USD
-                </p>
-
-                <span class="card__descuento">
-                    -${juego.descuento}%
-                </span>
-
-                <a
-                    class="card__oferta"
-                    href="${juego.enlace}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Ver oferta
+                <a href="#juegos" class="hero__boton">
+                    Explorar videojuegos
                 </a>
-
-                <button
-                    type="button"
-                    class="card__boton ${guardado ? "card__boton--activo" : ""}"
-                    data-id="${juego.id}"
-                    aria-pressed="${guardado}"
-                >
-                    ${guardado ? "♥ Quitar favorito" : "♡ Añadir favorito"}
-                </button>
 
             </div>
 
-        </article>
-    `;
-}
+        </section>
+
+        <!-- BLOQUE: CATALOGO DE VIDEOJUEGOS -->
+
+        <section class="catalogo" id="juegos">
+
+            <h2 class="catalogo__titulo">
+                🎮 Videojuegos y ofertas
+            </h2>
+
+            <p class="catalogo__descripcion">
+                Descubre videojuegos, precios y descuentos
+                obtenidos mediante la API CheapShark.
+            </p>
+
+            <br>
+
+            <!-- Buscador de videojuegos -->
+
+            <input
+                type="search"
+                class="catalogo__buscador"
+                id="buscador"
+                placeholder="Buscar videojuego..."
+                aria-label="Buscar videojuegos"
+                autocomplete="off"
+            >
+
+            <!-- Tarjetas generadas mediante JavaScript -->
+
+            <div
+                class="catalogo__grid"
+                id="lista-juegos"
+                aria-live="polite">
+
+                <p>Cargando videojuegos...</p>
+
+            </div>
+
+        </section>
+
+        <!-- BLOQUE: NOTICIAS -->
+
+        <section class="noticias" id="noticias">
+
+            <h2 class="noticias__titulo">
+                📰 Noticias Gaming
+            </h2>
+
+            <article class="noticia">
+
+                <h3 class="noticia__titulo">
+                    Novedades del mundo gaming
+                </h3>
+
+                <p class="noticia__descripcion">
+                    Descubre proximamente noticias,
+                    actualizaciones y nuevos lanzamientos
+                    de videojuegos.
+                </p>
+
+            </article>
+
+            <br>
+
+            <article class="noticia">
+
+                <h3 class="noticia__titulo">
+                    Nuevas ofertas de videojuegos
+                </h3>
+
+                <p class="noticia__descripcion">
+                    Consulta los descuentos disponibles
+                    en nuestro catalogo dinamico.
+                </p>
+
+                <br>
+
+                <a href="#juegos" class="hero__boton">
+                    Ver ofertas
+                </a>
+
+            </article>
+
+            <!-- Contenedor para futura API de noticias -->
+
+            <div class="noticias__grid" id="lista-noticias">
+            </div>
+
+        </section>
+
+        <!-- BLOQUE: FAVORITOS -->
+
+        <section class="favoritos" id="favoritos">
+
+            <h2 class="favoritos__titulo">
+                ❤️ Mis videojuegos favoritos
+            </h2>
+
+            <p class="favoritos__descripcion">
+                Guarda los videojuegos que mas te interesan.
+            </p>
+
+            <br>
+
+            <div
+                class="catalogo__grid"
+                id="lista-favoritos"
+                aria-live="polite">
+
+                <p>No tienes favoritos guardados.</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- BLOQUE: PIE DE PAGINA -->
+
+    <footer class="footer">
+
+        <p class="footer__texto">
+            © 2026 CRAZY GAMING
+        </p>
+
+        <p class="footer__descripcion">
+            Proyecto de Programacion Web
+        </p>
+
+        <br>
+
+        <p class="footer__descripcion">
+            Datos de ofertas proporcionados por
+
+            <a href="https://www.cheapshark.com/"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                CheapShark
+
+            </a>
+        </p>
+
+        <br>
+
+        <p class="footer__descripcion">
+            HTML5 | CSS3 | JavaScript | BEM | API REST
+        </p>
+
+    </footer>
+
+    <!-- Conexion con la API externa -->
+
+    <script src="./scripts/api.js" defer></script>
+
+    <!-- Funciones principales de la pagina -->
+
+    <script src="./scripts/app.js" defer></script>
+
+</body>
+
+</html>
