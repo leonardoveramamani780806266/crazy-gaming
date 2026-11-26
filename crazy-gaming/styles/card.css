@@ -1,117 +1,162 @@
+/* ========================================
+   BLOQUE: PERSONAJES Y TARJETAS
+   CRAZY TEKKEN
+======================================== */
 
-/* BLOQUE: catalogo */
-
-.catalogo__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
+/* BUSCADOR */
 
 .catalogo__buscador {
+    display: block;
+
     width: 100%;
     max-width: 450px;
-    padding: 14px;
-    margin-bottom: 25px;
-    border: 1px solid var(--morado);
-    border-radius: 10px;
+
+    padding: 14px 18px;
+    margin-bottom: 30px;
+
     background: var(--panel);
-    color: white;
+    color: var(--texto);
+
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+
+    outline: none;
+
+    transition: 0.3s ease;
 }
 
-/* BLOQUE: card */
+.catalogo__buscador::placeholder {
+    color: var(--texto-secundario);
+}
+
+.catalogo__buscador:focus {
+    border-color: var(--rojo);
+    box-shadow: 0 0 12px rgba(208, 0, 36, 0.25);
+}
+
+/* CUADRICULA */
+
+.catalogo__grid,
+#lista-personajes {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+/* TARJETA */
 
 .card {
-    background: var(--panel);
-    border: 1px solid #50306d;
-    border-radius: 15px;
+    background: linear-gradient(
+        145deg,
+        #202020,
+        #0c0c0c
+    );
+
+    border: 1px solid #333333;
+    border-radius: 12px;
+
     overflow: hidden;
-    transition: 0.3s;
+    position: relative;
+
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
 }
+
+/* EFECTO HOVER */
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px #a855f766;
+    transform: translateY(-8px);
+
+    border-color: var(--rojo);
+
+    box-shadow: 0 10px 30px rgba(208, 0, 36, 0.25);
 }
 
-/* ELEMENTOS */
+/* IMAGEN */
 
 .card__imagen {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 280px;
+
     display: block;
-    background: #28163c;
+
+    object-fit: cover;
+    object-position: center top;
+
+    background: #111111;
+
+    transition: transform 0.4s ease;
 }
+
+.card:hover .card__imagen {
+    transform: scale(1.05);
+}
+
+/* CONTENIDO */
 
 .card__contenido {
-    padding: 18px;
+    padding: 20px;
 }
 
+/* NOMBRE */
+
 .card__titulo {
-    margin-bottom: 10px;
+    color: var(--texto);
+
+    font-size: 20px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: 14px;
+
+    border-bottom: 2px solid var(--rojo);
+
+    padding-bottom: 10px;
 }
+
+/* INFORMACION */
 
 .card__genero {
     color: var(--texto-secundario);
-    font-size: 14px;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    margin-bottom: 8px;
 }
 
-.card__valoracion {
-    color: gold;
-    margin: 12px 0;
+.card__genero strong {
+    color: var(--rojo-hover);
 }
 
-.card__boton {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: var(--morado-oscuro);
-    color: white;
+/* TABLETS */
+
+@media (max-width: 1024px) {
+
+    .catalogo__grid,
+    #lista-personajes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
-.card__boton:hover {
-    background: var(--morado);
-}
+/* CELULARES */
 
-/* MODIFICADORES */
+@media (max-width: 600px) {
 
-.card--favorito {
-    border: 2px solid var(--morado);
-}
+    .catalogo__grid,
+    #lista-personajes {
+        grid-template-columns: 1fr;
+    }
 
-.card__boton--activo {
-    background: #a32a69;
-}
-.card__precio {
-    color: #4ade80;
-    font-size: 24px;
-    font-weight: bold;
-}
+    .card__imagen {
+        height: 320px;
+    }
 
-.card__precio-original {
-    color: gray;
-    text-decoration: line-through;
-}
-
-.card__descuento {
-    display: inline-block;
-    background: #166534;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 6px;
-    margin: 10px 0;
-}
-
-.card__oferta {
-    display: block;
-    text-align: center;
-    background: #7024c4;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.card__oferta:hover {
-    background: #a855f7;
+    .card__contenido {
+        padding: 18px;
+    }
 }

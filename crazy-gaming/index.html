@@ -1,276 +1,356 @@
 
 <!DOCTYPE html>
-
-<!--
-PROYECTO: CRAZY GAMING
-FECHA: 23/11/2026
-
-AVANCE DE HOY:
-- Implementacion de metodologia BEM.
-- Organizacion modular de archivos CSS.
-- Implementacion de HTML semantico.
-- Consumo de API REST CheapShark.
-- Catalogo dinamico de videojuegos.
-- Visualizacion de precios y descuentos.
-- Sistema de busqueda y favoritos.
-- Adaptacion a computadoras, tablets y celulares.
--->
-
 <html lang="es">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Crazy Gaming: videojuegos, ofertas y noticias gaming.">
+    <meta
+        name="description"
+        content="Crazy Tekken: descubre los personajes, movimientos y modos de juego de Tekken 8."
+    >
 
-    <meta name="theme-color" content="#090713">
+    <title>CRAZY TEKKEN | The King of Iron Fist</title>
 
-    <title>CRAZY GAMING</title>
+    <!-- ESTILOS CSS -->
 
-    <!-- Estilos generales -->
     <link rel="stylesheet" href="./styles/styles.css">
-
-    <!-- Estilos del encabezado -->
     <link rel="stylesheet" href="./styles/header.css">
-
-    <!-- Estilos del banner -->
     <link rel="stylesheet" href="./styles/hero.css">
-
-    <!-- Estilos de las tarjetas -->
     <link rel="stylesheet" href="./styles/card.css">
-
-    <!-- Estilos del pie de pagina -->
     <link rel="stylesheet" href="./styles/footer.css">
-
-    <!-- Estilos responsive -->
     <link rel="stylesheet" href="./styles/responsive.css">
 
 </head>
 
 <body>
 
-    <!-- BLOQUE: ENCABEZADO -->
+    <!-- ENCABEZADO Y NAVEGACION -->
 
     <header class="header">
 
         <a href="#inicio" class="header__logo">
-            🎮 CRAZY <span>GAMING</span>
+            CRAZY <span>TEKKEN</span>
         </a>
 
         <button
-            type="button"
             class="header__toggle"
             id="menu-toggle"
-            aria-label="Abrir menu"
+            aria-label="Abrir menú"
+            aria-expanded="false"
             aria-controls="menu"
-            aria-expanded="false">
-
-            ☰
-
+        >
+            &#9776;
         </button>
 
-        <nav class="header__nav"
-             id="menu"
-             aria-label="Navegacion principal">
+        <nav class="header__nav" id="menu">
 
-            <a href="#inicio"
-               class="header__link header__link--activo">
+            <a href="#inicio" class="header__link header__link--activo">
                 Inicio
             </a>
 
-            <a href="#juegos" class="header__link">
-                Juegos y ofertas
+            <a href="#personajes" class="header__link">
+                Personajes
+            </a>
+
+            <a href="#movimientos" class="header__link">
+                Movimientos
+            </a>
+
+            <a href="#modos" class="header__link">
+                Modos de juego
             </a>
 
             <a href="#noticias" class="header__link">
                 Noticias
             </a>
 
-            <a href="#favoritos" class="header__link">
-                Favoritos
-            </a>
-
         </nav>
 
     </header>
+
 
     <!-- CONTENIDO PRINCIPAL -->
 
     <main class="main">
 
-        <!-- BLOQUE: BANNER PRINCIPAL -->
+
+        <!-- SECCION INICIO -->
 
         <section class="hero" id="inicio">
 
             <div class="hero__contenido">
 
+                <span class="hero__etiqueta">
+                    THE KING OF IRON FIST
+                </span>
+
                 <h1 class="hero__titulo">
-                    Bienvenido a CRAZY GAMING
+                    TEKKEN <span>8</span>
                 </h1>
 
+                <h2 class="hero__subtitulo">
+                    El combate definitivo comienza aquí
+                </h2>
+
                 <p class="hero__descripcion">
-                    Explora el universo de los videojuegos,
-                    descubre ofertas y encuentra tus juegos
-                    favoritos en un solo lugar.
+                    Descubre el universo de Tekken 8, conoce a sus
+                    luchadores y explora sus estilos de combate,
+                    movimientos y características.
                 </p>
 
-                <a href="#juegos" class="hero__boton">
-                    Explorar videojuegos
+                <a href="#personajes" class="hero__boton">
+                    Explorar personajes
                 </a>
 
             </div>
 
         </section>
 
-        <!-- BLOQUE: CATALOGO DE VIDEOJUEGOS -->
 
-        <section class="catalogo" id="juegos">
+        <!-- SECCION PERSONAJES -->
+
+        <section class="catalogo" id="personajes">
 
             <h2 class="catalogo__titulo">
-                🎮 Videojuegos y ofertas
+                PERSONAJES DE TEKKEN 8
             </h2>
 
             <p class="catalogo__descripcion">
-                Descubre videojuegos, precios y descuentos
-                obtenidos mediante la API CheapShark.
+                Conoce a los luchadores que participan en el
+                Torneo del Rey del Puño de Hierro.
             </p>
 
-            <br>
-
-            <!-- Buscador de videojuegos -->
+            <!-- BUSCADOR -->
 
             <input
-                type="search"
-                class="catalogo__buscador"
+                type="text"
                 id="buscador"
-                placeholder="Buscar videojuego..."
-                aria-label="Buscar videojuegos"
-                autocomplete="off"
+                class="catalogo__buscador"
+                placeholder="Buscar luchador..."
+                aria-label="Buscar personajes"
             >
 
-            <!-- Tarjetas generadas mediante JavaScript -->
+            <!-- LISTA DINAMICA DE PERSONAJES -->
 
             <div
                 class="catalogo__grid"
-                id="lista-juegos"
-                aria-live="polite">
+                id="lista-personajes"
+            >
 
-                <p>Cargando videojuegos...</p>
+                <p>Cargando personajes de Tekken 8...</p>
 
             </div>
 
         </section>
 
-        <!-- BLOQUE: NOTICIAS -->
+
+        <!-- SECCION MOVIMIENTOS -->
+
+        <section class="movimientos" id="movimientos">
+
+            <h2 class="movimientos__titulo">
+                MOVIMIENTOS Y COMBOS
+            </h2>
+
+            <p class="movimientos__descripcion">
+                Aprende algunos conceptos importantes del combate
+                y mejora tu estrategia dentro del juego.
+            </p>
+
+            <div class="movimientos__contenido">
+
+                <article class="movimiento">
+
+                    <h3 class="movimiento__titulo">
+                        Combos
+                    </h3>
+
+                    <p class="movimiento__descripcion">
+                        Aprende a conectar diferentes ataques
+                        para conseguir combinaciones de golpes.
+                    </p>
+
+                </article>
+
+
+                <article class="movimiento">
+
+                    <h3 class="movimiento__titulo">
+                        Castigos
+                    </h3>
+
+                    <p class="movimiento__descripcion">
+                        Aprovecha los errores del rival para
+                        responder con ataques efectivos.
+                    </p>
+
+                </article>
+
+
+                <article class="movimiento">
+
+                    <h3 class="movimiento__titulo">
+                        Defensa
+                    </h3>
+
+                    <p class="movimiento__descripcion">
+                        Utiliza bloqueos, movimientos y estrategias
+                        para protegerte de los ataques enemigos.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECCION MODOS DE JUEGO -->
+
+        <section class="modos" id="modos">
+
+            <h2 class="modos__titulo">
+                MODOS DE JUEGO
+            </h2>
+
+            <div class="modos__contenido">
+
+                <article class="modo">
+
+                    <h3 class="modo__titulo">
+                        Modo Historia
+                    </h3>
+
+                    <p class="modo__descripcion">
+                        Vive la historia de Jin Kazama y su
+                        enfrentamiento contra Kazuya Mishima.
+                    </p>
+
+                </article>
+
+
+                <article class="modo">
+
+                    <h3 class="modo__titulo">
+                        Arcade Quest
+                    </h3>
+
+                    <p class="modo__descripcion">
+                        Explora una experiencia inspirada en
+                        las salas recreativas y los torneos.
+                    </p>
+
+                </article>
+
+
+                <article class="modo">
+
+                    <h3 class="modo__titulo">
+                        Combate Online
+                    </h3>
+
+                    <p class="modo__descripcion">
+                        Enfréntate a jugadores de diferentes
+                        partes del mundo.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECCION NOTICIAS -->
 
         <section class="noticias" id="noticias">
 
             <h2 class="noticias__titulo">
-                📰 Noticias Gaming
+                NOTICIAS Y ACTUALIZACIONES
             </h2>
 
-            <article class="noticia">
+            <div id="lista-noticias">
 
-                <h3 class="noticia__titulo">
-                    Novedades del mundo gaming
-                </h3>
+                <article class="noticia">
 
-                <p class="noticia__descripcion">
-                    Descubre proximamente noticias,
-                    actualizaciones y nuevos lanzamientos
-                    de videojuegos.
-                </p>
+                    <h3 class="noticia__titulo">
+                        Bienvenido a Crazy Tekken
+                    </h3>
 
-            </article>
+                    <p class="noticia__descripcion">
+                        Mantente informado sobre los personajes,
+                        novedades y contenido de Tekken 8.
+                    </p>
 
-            <br>
+                </article>
 
-            <article class="noticia">
-
-                <h3 class="noticia__titulo">
-                    Nuevas ofertas de videojuegos
-                </h3>
-
-                <p class="noticia__descripcion">
-                    Consulta los descuentos disponibles
-                    en nuestro catalogo dinamico.
-                </p>
-
-                <br>
-
-                <a href="#juegos" class="hero__boton">
-                    Ver ofertas
-                </a>
-
-            </article>
-
-            <!-- Contenedor para futura API de noticias -->
-
-            <div class="noticias__grid" id="lista-noticias">
             </div>
 
         </section>
 
-        <!-- BLOQUE: FAVORITOS -->
-
-        <section class="favoritos" id="favoritos">
-
-            <h2 class="favoritos__titulo">
-                ❤️ Mis videojuegos favoritos
-            </h2>
-
-            <p class="favoritos__descripcion">
-                Guarda los videojuegos que mas te interesan.
-            </p>
-
-            <br>
-
-            <div
-                class="catalogo__grid"
-                id="lista-favoritos"
-                aria-live="polite">
-
-                <p>No tienes favoritos guardados.</p>
-
-            </div>
-
-        </section>
 
     </main>
 
-    <!-- BLOQUE: PIE DE PAGINA -->
 
-   <footer class="footer">
-    <div class="footer__contenido">
- 
-        <div class="footer__marca">
-            <img
-                src="./assets/images/logo-crazy-gaming.png"
-                alt="Logo de Crazy Gaming"
-                class="footer__logo"
-            >
- 
-            <p class="footer__descripcion">
-                Tu espacio para descubrir el mundo gamer.
+    <!-- PIE DE PAGINA -->
+
+    <footer class="footer">
+
+        <div class="footer__contenido">
+
+            <div class="footer__marca">
+
+                <h2 class="footer__logo">
+                    CRAZY <span>TEKKEN</span>
+                </h2>
+
+                <p class="footer__descripcion">
+                    Descubre los luchadores, sus características
+                    y el universo de Tekken 8.
+                </p>
+
+            </div>
+
+
+            <nav class="footer__nav">
+
+                <a href="#inicio">Inicio</a>
+
+                <a href="#personajes">Personajes</a>
+
+                <a href="#movimientos">Movimientos</a>
+
+                <a href="#modos">Modos de juego</a>
+
+                <a href="#noticias">Noticias</a>
+
+            </nav>
+
+
+            <p class="footer__copyright">
+                © 2026 Crazy Tekken. Todos los derechos reservados.
             </p>
+
+
+            <p class="footer__aviso">
+                Sitio web de carácter educativo y no oficial.
+                Tekken pertenece a Bandai Namco Entertainment.
+            </p>
+
         </div>
- 
-    </div>
- 
-    <p class="footer__copyright">
-        © 2026 Crazy Gaming. Todos los derechos reservados.
-    </p>
-</footer>
-    <!-- Conexion con la API externa -->
+
+    </footer>
+
+
+    <!-- CONEXION CON LA API EXTERNA -->
 
     <script src="./scripts/api.js" defer></script>
 
-    <!-- Funciones principales de la pagina -->
+    <!-- FUNCIONES PRINCIPALES -->
 
     <script src="./scripts/app.js" defer></script>
 

@@ -1,16 +1,26 @@
+/* ========================================
+   CRAZY TEKKEN
+   ESTILOS GENERALES
+======================================== */
 
-/* Variables globales */
+/* VARIABLES GLOBALES */
 
 :root {
-    --fondo: #090713;
-    --panel: #191126;
-    --morado: #a855f7;
-    --morado-oscuro: #7024c4;
+    --fondo: #090909;
+    --fondo-secundario: #111111;
+    --panel: #1b1b1b;
+
+    --rojo: #d00024;
+    --rojo-hover: #ff173f;
+    --rojo-oscuro: #790018;
+
     --texto: #ffffff;
-    --texto-secundario: #b9b1c9;
+    --texto-secundario: #b5b5b5;
+
+    --borde: #333333;
 }
 
-/* Configuracion general */
+/* CONFIGURACION GENERAL */
 
 * {
     margin: 0;
@@ -18,27 +28,42 @@
     box-sizing: border-box;
 }
 
+/* DESPLAZAMIENTO SUAVE */
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
 }
 
+/* CUERPO PRINCIPAL */
+
 body {
-    font-family: Arial, sans-serif;
-    background: radial-gradient(
-        circle at top,
-        #291044,
-        var(--fondo) 60%
-    );
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #35000d,
+            var(--fondo) 55%
+        );
+
     color: var(--texto);
+
+    min-height: 100vh;
+    line-height: 1.6;
 }
+
+/* ENLACES */
 
 a {
     text-decoration: none;
     color: inherit;
 }
 
-button, input {
+/* FORMULARIOS Y BOTONES */
+
+button,
+input {
     font: inherit;
 }
 
@@ -46,29 +71,77 @@ button {
     cursor: pointer;
 }
 
+/* CONTENIDO PRINCIPAL */
+
 .main {
+    width: 100%;
     max-width: 1300px;
+
     margin: auto;
     padding: 25px;
 }
 
+/* SECCIONES GENERALES */
+
 section {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
 }
+
+/* TITULOS GENERALES */
 
 h2 {
     margin-bottom: 25px;
 }
 
+/* ESTILO DE SELECCION DE TEXTO */
+
+::selection {
+    background: var(--rojo);
+    color: var(--texto);
+}
+
+/* BARRA DE DESPLAZAMIENTO */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fondo);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--rojo-oscuro);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rojo);
+}
+
+/* NOTICIAS */
+
 .noticia {
     background: var(--panel);
-    border: 1px solid var(--morado);
-    border-radius: 15px;
+
+    border: 1px solid var(--borde);
+    border-left: 4px solid var(--rojo);
+
+    border-radius: 10px;
+
     padding: 25px;
+
+    transition: transform 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.noticia:hover {
+    transform: translateY(-5px);
+    border-color: var(--rojo);
 }
 
 .noticia__titulo {
-    color: var(--morado);
+    color: var(--rojo);
     margin-bottom: 15px;
 }
 

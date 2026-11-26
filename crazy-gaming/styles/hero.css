@@ -1,49 +1,135 @@
-
-/* BLOQUE: hero */
+/* ========================================
+   BLOQUE: HERO
+   CRAZY TEKKEN
+======================================== */
 
 .hero {
-    min-height: 400px;
+    min-height: 480px;
+
     display: flex;
     align-items: center;
-    padding: 50px;
-    background: linear-gradient(
-        120deg,
-        #20103a,
-        #572099,
-        #10091c
-    );
-    border: 1px solid var(--morado);
-    border-radius: 20px;
-    box-shadow: 0 0 25px #a855f733;
+
+    padding: 60px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(9, 9, 9, 0.98) 0%,
+            rgba(9, 9, 9, 0.85) 50%,
+            rgba(80, 0, 15, 0.55) 100%
+        ),
+        url("../assets/images/tekken-hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    border: 1px solid var(--rojo-oscuro);
+    border-left: 5px solid var(--rojo);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 0 30px rgba(208, 0, 36, 0.15),
+        inset 0 0 40px rgba(208, 0, 36, 0.08);
 }
 
-/* ELEMENTOS */
+/* CONTENIDO */
 
 .hero__contenido {
-    max-width: 650px;
+    max-width: 680px;
+
+    position: relative;
+    z-index: 1;
 }
 
-.hero__titulo {
-    font-size: clamp(32px, 5vw, 52px);
-    margin-bottom: 20px;
+/* ETIQUETA */
+
+.hero__etiqueta {
+    display: inline-block;
+
+    color: var(--rojo-hover);
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
 }
+
+/* TITULO */
+
+.hero__titulo {
+    font-size: clamp(42px, 6vw, 75px);
+
+    font-weight: 900;
+    line-height: 1.05;
+
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.hero__titulo span {
+    color: var(--rojo);
+}
+
+/* SUBTITULO */
+
+.hero__subtitulo {
+    color: var(--texto);
+    font-size: 22px;
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+/* DESCRIPCION */
 
 .hero__descripcion {
     color: var(--texto-secundario);
-    font-size: 18px;
+
+    font-size: 16px;
+    line-height: 1.8;
+
+    max-width: 550px;
+
     margin-bottom: 30px;
 }
 
+/* BOTON */
+
 .hero__boton {
     display: inline-block;
-    background: var(--morado);
-    color: white;
-    padding: 14px 25px;
-    border-radius: 10px;
-    transition: 0.3s;
+
+    background: var(--rojo);
+    color: var(--texto);
+
+    padding: 15px 30px;
+
+    border: 1px solid var(--rojo);
+    border-radius: 5px;
+
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    box-shadow: 0 5px 20px rgba(208, 0, 36, 0.25);
+
+    transition: all 0.3s ease;
 }
 
+/* EFECTO HOVER */
+
 .hero__boton:hover {
-    background: var(--morado-oscuro);
-    transform: translateY(-3px);
+    background: var(--rojo-hover);
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 25px rgba(208, 0, 36, 0.4);
 }

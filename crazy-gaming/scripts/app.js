@@ -1,86 +1,66 @@
+/* ========================================
+   CRAZY TEKKEN
+   LOGICA PRINCIPAL DE LA PAGINA
+======================================== */
 
-// Lista de videojuegos
+let personajes = [];
 
-let juegos = [
-    {
-        id: 1,
-        nombre: "Tekken 8",
-        genero: "Lucha",
-        valoracion: 4.8,
-        imagen: "assets/images/tekken8.jpg"
-    },
-    {
-        id: 2,
-        nombre: "Elden Ring",
-        genero: "RPG",
-        valoracion: 4.9,
-        imagen: "assets/images/eldenring.jpg"
-    },
-    {
-        id: 3,
-        nombre: "God of War",
-        genero: "Accion",
-        valoracion: 4.8,
-        imagen: "assets/images/godofwar.jpg"
-    },
-    {
-        id: 4,
-        nombre: "Forza Horizon 5",
-        genero: "Carreras",
-        valoracion: 4.7,
-        imagen: "assets/images/forza5.jpg"
-    }
-];
-
-// Recuperar favoritos guardados
-
-let favoritos = JSON.parse(
-    localStorage.getItem("favoritos") || "[]"
-);
-
-// Obtener elementos del HTML
-
-const listaJuegos = document.getElementById("lista-juegos");
-const listaFavoritos = document.getElementById("lista-favoritos");
+const listaPersonajes = document.getElementById("lista-personajes");
 const buscador = document.getElementById("buscador");
+
 const menu = document.getElementById("menu");
 const menuToggle = document.getElementById("menu-toggle");
 
-// Crear tarjeta utilizando BEM
+// Escapar caracteres especiales
+function escaparHTML(texto) {
 
-function crearTarjeta(juego) {
+    return String(texto ?? "").replace(/[&<>"']/g, caracter => {
 
-    const guardado = favoritos.includes(juego.id);
+        const caracteres = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        };
+
+        return caracteres[caracter];
+    });
+}
+
+// Crear tarjeta de personaje
+function crearTarjeta(personaje) {
 
     return `
-        <article class="card ${guardado ? "card--favorito" : ""}">
+        <article class="card">
 
             <img
                 class="card__imagen"
-                src="${juego.imagen}"
-                alt="${juego.nombre}"
+                src="${escaparHTML(personaje.imagen)}"
+                alt="Imagen de ${escaparHTML(personaje.nombre)}"
+                loading="lazy"
+                onerror="this.style.display='none'"
             >
 
             <div class="card__contenido">
 
                 <h3 class="card__titulo">
-                    ${juego.nombre}
+                    ${escaparHTML(personaje.nombre)}
                 </h3>
 
                 <p class="card__genero">
-                    ${juego.genero}
+                    <strong>Nombre completo:</strong>
+                    ${escaparHTML(personaje.nombreCompleto)}
                 </p>
 
-                <p class="card__valoracion">
-                    ★ ${juego.valoracion}
+                <p class="card__genero">
+                    <strong>Alias:</strong>
+                    ${escaparHTML(
+                        Array.isArray(personaje.alias)
+                            ? personaje.alias.join(", ") || "No disponible"
+                            : personaje.alias || "No disponible"
+                    )}
                 </p>
-
-                <button
-                    class="card__boton ${guardado ? "card__boton--activo" : ""}"
-                    data-id="${juego.id}"
-                >
-                    ${guardado ? "♥ Quitar favorito" : "♡ Añadir favorito"}
-                </button>
 
             </div>
 
@@ -88,95 +68,67 @@ function crearTarjeta(juego) {
     `;
 }
 
-// Mostrar videojuegos
+// Mostrar personajes
+function mostrarPersonajes(lista) {
 
-function mostrarJuegos(lista) {
-
-    listaJuegos.innerHTML = lista
-        .map(crearTarjeta)
-        .join("");
+    if (!listaPersonajes) return;
 
     if (lista.length === 0) {
-        listaJuegos.textContent = "No se encontraron juegos.";
+
+        listaPersonajes.textContent =
+            "No se encontraron personajes.";
+
+        return;
     }
-}
 
-// Mostrar favoritos
-
-function mostrarFavoritos() {
-
-    const seleccionados = juegos.filter(
-        juego => favoritos.includes(juego.id)
-    );
-
-    listaFavoritos.innerHTML = seleccionados
+    listaPersonajes.innerHTML = lista
         .map(crearTarjeta)
         .join("");
-
-    if (seleccionados.length === 0) {
-        listaFavoritos.textContent = "No tienes favoritos.";
-    }
 }
 
-// Buscar videojuegos
+// Buscar personajes
+function filtrarPersonajes() {
 
-function filtrarJuegos() {
+    const texto = buscador.value.toLowerCase().trim();
 
-    const texto = buscador.value.toLowerCase();
+    const resultado = personajes.filter(personaje => {
 
-    const resultado = juegos.filter(
-        juego => juego.nombre.toLowerCase().includes(texto)
-    );
+        const nombre = (personaje.nombre || "").toLowerCase();
 
-    mostrarJuegos(resultado);
+        const nombreCompleto =
+            (personaje.nombreCompleto || "").toLowerCase();
+
+        const alias = Array.isArray(personaje.alias)
+            ? personaje.alias.join(" ").toLowerCase()
+            : String(personaje.alias || "").toLowerCase();
+
+        return nombre.includes(texto) ||
+               nombreCompleto.includes(texto) ||
+               alias.includes(texto);
+    });
+
+    mostrarPersonajes(resultado);
 }
 
-buscador.addEventListener("input", filtrarJuegos);
+// Buscador
+if (buscador) {
+    buscador.addEventListener("input", filtrarPersonajes);
+}
 
-// Agregar o eliminar favoritos
+// Menú responsive
+if (menuToggle && menu) {
 
-document.addEventListener("click", function(evento) {
+    menuToggle.addEventListener("click", function() {
 
-    const boton = evento.target.closest(".card__boton");
-
-    if (!boton) return;
-
-    
-    const id = boton.dataset.id;
-
-    if (favoritos.includes(id)) {
-
-        favoritos = favoritos.filter(
-            favorito => favorito !== id
+        const abierto = menu.classList.toggle(
+            "header__nav--abierto"
         );
 
-    } else {
+        menuToggle.setAttribute("aria-expanded", abierto);
+    });
+}
 
-        favoritos.push(id);
-    }
-
-    localStorage.setItem(
-        "favoritos",
-        JSON.stringify(favoritos)
-    );
-
-    filtrarJuegos();
-    mostrarFavoritos();
-});
-
-// Abrir y cerrar menu responsive
-
-menuToggle.addEventListener("click", function() {
-
-    const abierto = menu.classList.toggle(
-        "header__nav--abierto"
-    );
-
-    menuToggle.setAttribute("aria-expanded", abierto);
-});
-
-// Activar enlaces del menu
-
+// Enlaces del menú
 document.querySelectorAll(".header__link").forEach(enlace => {
 
     enlace.addEventListener("click", function() {
@@ -187,32 +139,46 @@ document.querySelectorAll(".header__link").forEach(enlace => {
 
         enlace.classList.add("header__link--activo");
 
-        menu.classList.remove("header__nav--abierto");
+        if (menu && menuToggle) {
 
-        menuToggle.setAttribute("aria-expanded", "false");
+            menu.classList.remove("header__nav--abierto");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+        }
     });
 });
 
-// Ejecutar funciones iniciales
-
-
-// Cargar videojuegos desde la API
+// Cargar personajes
 async function iniciarPagina() {
 
-    listaJuegos.textContent = "Cargando videojuegos...";
+    if (!listaPersonajes) return;
 
-    juegos = await obtenerJuegosAPI();
+    listaPersonajes.textContent =
+        "Cargando luchadores de Tekken 8...";
 
-    if (juegos.length === 0) {
-        listaJuegos.textContent =
-            "No se pudieron cargar los videojuegos.";
-        mostrarFavoritos();
-        return;
+    try {
+
+        personajes = await obtenerPersonajesAPI();
+
+        if (!personajes || personajes.length === 0) {
+
+            listaPersonajes.textContent =
+                "No se pudieron cargar los personajes.";
+
+            return;
+        }
+
+        mostrarPersonajes(personajes);
+
+        console.log("Personajes cargados:", personajes.length);
+
+    } catch (error) {
+
+        console.error("Error al iniciar la página:", error);
+
+        listaPersonajes.textContent =
+            "Ocurrió un error al cargar los personajes.";
     }
-
-    mostrarJuegos(juegos);
-    mostrarFavoritos();
 }
 
-// Iniciar la pagina
 iniciarPagina();

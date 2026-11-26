@@ -1,57 +1,125 @@
-
-/* BLOQUE: header */
+/* ========================================
+   BLOQUE: HEADER
+   CRAZY TEKKEN
+======================================== */
 
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 5%;
-    background: rgba(9, 7, 19, 0.85);
+
+    padding: 18px 5%;
+
+    background: rgba(9, 9, 9, 0.95);
+
     backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--morado);
+
+    border-bottom: 2px solid var(--rojo);
+
     position: sticky;
     top: 0;
     z-index: 100;
+
+    box-shadow: 0 4px 20px rgba(208, 0, 36, 0.12);
 }
 
-/* ELEMENTOS */
+/* LOGOTIPO */
 
 .header__logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    color: var(--texto);
+
+    transition: 0.3s ease;
 }
 
 .header__logo span {
-    color: var(--morado);
+    color: var(--rojo);
 }
+
+.header__logo:hover {
+    transform: scale(1.04);
+}
+
+/* NAVEGACION */
 
 .header__nav {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    gap: 20px;
 }
+
+/* ENLACES */
 
 .header__link {
-    color: white;
-    padding: 10px;
-    transition: 0.3s;
+    position: relative;
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+    font-weight: bold;
+
+    padding: 10px 5px;
+
+    transition: color 0.3s ease;
 }
 
-.header__link:hover {
-    color: var(--morado);
+/* LINEA INFERIOR */
+
+.header__link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--rojo);
+
+    transition: width 0.3s ease;
 }
+
+/* EFECTO HOVER */
+
+.header__link:hover {
+    color: var(--texto);
+}
+
+.header__link:hover::after {
+    width: 100%;
+}
+
+/* ENLACE ACTIVO */
+
+.header__link--activo {
+    color: var(--rojo);
+}
+
+.header__link--activo::after {
+    width: 100%;
+}
+
+/* BOTON MENU MOVIL */
 
 .header__toggle {
     display: none;
+
     background: transparent;
     border: none;
-    color: white;
+
+    color: var(--texto);
+
     font-size: 28px;
+    cursor: pointer;
+
+    transition: color 0.3s ease;
 }
 
-/* MODIFICADOR */
-
-.header__link--activo {
-    color: var(--morado);
-    border-bottom: 2px solid var(--morado);
+.header__toggle:hover {
+    color: var(--rojo);
 }

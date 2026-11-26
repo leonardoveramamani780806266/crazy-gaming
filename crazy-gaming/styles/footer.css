@@ -1,24 +1,107 @@
-
-/* BLOQUE: footer */
+/* ========================================
+   BLOQUE: FOOTER
+   CRAZY TEKKEN
+======================================== */
 
 .footer {
-    background: #10091c;
+    background: #080808;
+
     text-align: center;
-    padding: 30px;
-    border-top: 1px solid var(--morado);
+
+    padding: 45px 25px 25px;
+
+    border-top: 2px solid var(--rojo);
+
+    box-shadow: 0 -5px 25px rgba(208, 0, 36, 0.08);
 }
 
-/* ELEMENTOS */
+/* MARCA */
 
-.footer__texto {
-    color: var(--morado);
-    font-weight: bold;
-    margin-bottom: 10px;
+.footer__marca {
+    margin-bottom: 15px;
 }
+
+/* LOGOTIPO */
+
+.footer__logo {
+    color: var(--texto);
+
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.footer__logo span {
+    color: var(--rojo);
+}
+
+/* DESCRIPCION */
 
 .footer__descripcion {
     color: var(--texto-secundario);
+
     font-size: 14px;
+
+    max-width: 550px;
+
+    margin: 10px auto 25px;
+
+    line-height: 1.7;
+}
+
+/* NAVEGACION */
+
+.footer__nav {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+    gap: 25px;
+
+    margin-bottom: 30px;
+}
+
+/* ENLACES */
+
+.footer__nav a {
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    transition: color 0.3s ease;
+}
+
+.footer__nav a:hover {
+    color: var(--rojo-hover);
+}
+
+/* COPYRIGHT */
+
+.footer__copyright {
+    padding-top: 20px;
+
+    border-top: 1px solid var(--borde);
+
+    color: #777777;
+
+    font-size: 12px;
+}
+
+/* AVISO */
+
+.footer__aviso {
+    color: #555555;
+
+    font-size: 11px;
+
+    margin-top: 10px;
 }
 /* Contenedor principal del footer */
 .footer {
