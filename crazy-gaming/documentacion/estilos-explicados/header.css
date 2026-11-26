@@ -1,0 +1,159 @@
+
+/* ========================================
+   BLOQUE: HEADER
+   CRAZY TEKKEN
+   ESTILOS DOCUMENTADOS
+======================================== */
+
+/* ENCABEZADO PRINCIPAL:
+   La clase .header representa la parte superior
+   de la página, donde se encuentra el logo y el menú. */
+
+.header {
+    display: flex; /* Activa Flexbox para organizar los elementos en una fila. */
+    align-items: center; /* Centra verticalmente el logotipo y el menú. */
+    justify-content: space-between; /* Coloca el logotipo a la izquierda y el menú a la derecha. */
+
+    padding: 18px 5%; /* Agrega 18 píxeles de espacio vertical y un 5% de espacio horizontal. */
+
+    background: rgba(9, 9, 9, 0.95); /* Establece un fondo negro con un 95% de opacidad. */
+
+    backdrop-filter: blur(15px); /* Aplica un efecto de desenfoque al contenido que queda detrás del encabezado. */
+
+    border-bottom: 2px solid var(--rojo); /* Agrega una línea roja de 2 píxeles en la parte inferior. */
+
+    position: sticky; /* Mantiene el encabezado visible al desplazarse por la página. */
+    top: 0; /* Fija el encabezado en la parte superior de la ventana. */
+    z-index: 100; /* Coloca el encabezado por encima de otros elementos de la página. */
+
+    box-shadow: 0 4px 20px rgba(208, 0, 36, 0.12); /* Agrega una sombra roja suave debajo del encabezado. */
+}
+
+/* LOGOTIPO:
+   La clase .header__logo identifica el nombre
+   de Crazy Tekken dentro del encabezado. */
+
+.header__logo {
+    font-size: 25px; /* Establece el tamaño de las letras en 25 píxeles. */
+    font-weight: 900; /* Aplica un grosor de letra muy alto para destacar el logotipo. */
+    letter-spacing: 1px; /* Agrega un píxel de separación entre las letras. */
+
+    color: var(--texto); /* Establece el color blanco del logotipo. */
+
+    transition: 0.3s ease; /* Suaviza los cambios visuales durante 0.3 segundos. */
+}
+
+/* PARTE DESTACADA DEL LOGOTIPO:
+   El selector span modifica el texto que se encuentra
+   dentro de un elemento span del logotipo. */
+
+.header__logo span {
+    color: var(--rojo); /* Cambia a rojo la parte del logotipo encerrada en span. */
+}
+
+/* EFECTO DEL LOGOTIPO:
+   :hover se activa cuando el cursor pasa
+   sobre el logotipo. */
+
+.header__logo:hover {
+    transform: scale(1.04); /* Aumenta ligeramente el tamaño del logotipo al pasar el cursor. */
+}
+
+/* NAVEGACION:
+   La clase .header__nav contiene los enlaces
+   que permiten desplazarse entre las secciones. */
+
+.header__nav {
+    display: flex; /* Organiza los enlaces del menú en una fila. */
+    align-items: center; /* Centra verticalmente los enlaces. */
+    gap: 20px; /* Establece 20 píxeles de separación entre los enlaces. */
+}
+
+/* ENLACES:
+   La clase .header__link representa cada enlace
+   del menú de navegación. */
+
+.header__link {
+    position: relative; /* Permite posicionar elementos internos respecto a cada enlace. */
+
+    color: var(--texto-secundario); /* Establece el color gris de los enlaces. */
+
+    font-size: 14px; /* Define el tamaño del texto en 14 píxeles. */
+    font-weight: bold; /* Hace que el texto de los enlaces aparezca en negrita. */
+
+    padding: 10px 5px; /* Agrega 10 píxeles de espacio vertical y 5 horizontales. */
+
+    transition: color 0.3s ease; /* Suaviza el cambio de color durante 0.3 segundos. */
+}
+
+/* LINEA INFERIOR:
+   ::after crea un elemento visual después
+   del contenido de cada enlace. */
+
+.header__link::after {
+    content: ""; /* Crea un elemento vacío que se utilizará como línea decorativa. */
+
+    position: absolute; /* Permite colocar la línea en una posición específica respecto al enlace. */
+
+    left: 0; /* Coloca la línea desde el extremo izquierdo del enlace. */
+    bottom: 0; /* Ubica la línea en la parte inferior del enlace. */
+
+    width: 0; /* Inicialmente establece el ancho de la línea en cero. */
+    height: 2px; /* Establece el grosor de la línea en 2 píxeles. */
+
+    background: var(--rojo); /* Establece el color rojo de la línea. */
+
+    transition: width 0.3s ease; /* Anima suavemente el cambio de ancho de la línea. */
+}
+
+/* EFECTO HOVER:
+   Estas reglas cambian la apariencia del enlace
+   cuando el cursor pasa sobre él. */
+
+.header__link:hover {
+    color: var(--texto); /* Cambia el texto del enlace a color blanco. */
+}
+
+/* ANIMACION DE LA LINEA INFERIOR */
+
+.header__link:hover::after {
+    width: 100%; /* Hace que la línea roja ocupe todo el ancho del enlace. */
+}
+
+/* ENLACE ACTIVO:
+   La clase modificadora --activo identifica
+   el enlace que está seleccionado actualmente. */
+
+.header__link--activo {
+    color: var(--rojo); /* Cambia el color del enlace activo a rojo. */
+}
+
+/* LINEA DEL ENLACE ACTIVO */
+
+.header__link--activo::after {
+    width: 100%; /* Mantiene visible la línea roja debajo del enlace activo. */
+}
+
+/* BOTON MENU MOVIL:
+   La clase .header__toggle representa el botón
+   que permite abrir y cerrar el menú en celulares. */
+
+.header__toggle {
+    display: none; /* Oculta el botón en pantallas donde no se necesita. */
+
+    background: transparent; /* Establece un fondo transparente. */
+    border: none; /* Elimina el borde predeterminado del botón. */
+
+    color: var(--texto); /* Establece el color blanco del botón. */
+
+    font-size: 28px; /* Define el tamaño del símbolo del botón en 28 píxeles. */
+    cursor: pointer; /* Muestra una mano al pasar el cursor sobre el botón. */
+
+    transition: color 0.3s ease; /* Suaviza el cambio de color durante 0.3 segundos. */
+}
+
+/* EFECTO HOVER DEL BOTON MOVIL */
+
+.header__toggle:hover {
+    color: var(--rojo); /* Cambia el color del botón a rojo al pasar el cursor. */
+}

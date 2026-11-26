@@ -1,0 +1,197 @@
+
+/* ========================================
+   CRAZY TEKKEN
+   ESTILOS GENERALES DOCUMENTADOS
+======================================== */
+
+/* VARIABLES GLOBALES:
+   :root permite definir variables que se pueden
+   reutilizar en cualquier parte del archivo CSS. */
+
+:root {
+    --fondo: #090909; /* Define el color negro principal de la página. */
+    --fondo-secundario: #111111; /* Define un segundo tono oscuro para los fondos. */
+    --panel: #1b1b1b; /* Define el color de fondo de los paneles y tarjetas. */
+
+    --rojo: #d00024; /* Define el color rojo principal del diseño. */
+    --rojo-hover: #ff173f; /* Define el rojo que se utiliza al pasar el cursor. */
+    --rojo-oscuro: #790018; /* Define un tono rojo oscuro para algunos detalles. */
+
+    --texto: #ffffff; /* Define el color blanco para los textos principales. */
+    --texto-secundario: #b5b5b5; /* Define el gris para textos secundarios. */
+
+    --borde: #333333; /* Define el color general de los bordes. */
+}
+
+/* CONFIGURACION GENERAL:
+   El selector universal (*) aplica estas reglas
+   a todos los elementos HTML de la página. */
+
+* {
+    margin: 0; /* Elimina los márgenes predeterminados de los elementos. */
+    padding: 0; /* Elimina los espacios internos predeterminados. */
+    box-sizing: border-box; /* Incluye el padding y el borde dentro del tamaño total del elemento. */
+}
+
+/* DESPLAZAMIENTO SUAVE:
+   El selector html permite configurar el desplazamiento
+   general de la página. */
+
+html {
+    scroll-behavior: smooth; /* Hace que el desplazamiento entre secciones sea suave. */
+    scroll-padding-top: 100px; /* Deja un espacio superior al llegar a una sección mediante un enlace. */
+}
+
+/* CUERPO PRINCIPAL:
+   El selector body aplica los estilos generales
+   al contenido visible de la página. */
+
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Establece la fuente de los textos y sus alternativas. */
+
+    background:
+        radial-gradient(
+            circle at top, /* Indica que el degradado tiene forma circular y comienza arriba. */
+            #35000d, /* Establece el color rojo oscuro del centro del degradado. */
+            var(--fondo) 55% /* Cambia hacia el negro principal hasta el 55% del degradado. */
+        );
+
+    color: var(--texto); /* Establece el color blanco como color general del texto. */
+
+    min-height: 100vh; /* Hace que el cuerpo tenga como mínimo el alto de la pantalla. */
+    line-height: 1.6; /* Establece la separación vertical entre las líneas de texto. */
+}
+
+/* ENLACES:
+   El selector a modifica la apariencia de todos
+   los enlaces de la página. */
+
+a {
+    text-decoration: none; /* Elimina el subrayado predeterminado de los enlaces. */
+    color: inherit; /* Hace que el enlace utilice el color de su elemento padre. */
+}
+
+/* FORMULARIOS Y BOTONES:
+   Los selectores button e input comparten
+   las siguientes propiedades. */
+
+button,
+input {
+    font: inherit; /* Hace que los botones y campos utilicen la misma fuente que su elemento padre. */
+}
+
+/* BOTONES:
+   Este selector modifica específicamente
+   el comportamiento visual de los botones. */
+
+button {
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que el botón es interactivo. */
+}
+
+/* CONTENIDO PRINCIPAL:
+   La clase .main organiza el espacio donde
+   se encuentra el contenido principal. */
+
+.main {
+    width: 100%; /* Permite que el contenedor ocupe todo el ancho disponible. */
+    max-width: 1300px; /* Evita que el contenedor supere los 1300 píxeles de ancho. */
+
+    margin: auto; /* Centra horizontalmente el contenedor cuando tiene un ancho máximo. */
+    padding: 25px; /* Agrega 25 píxeles de espacio interno en todos sus lados. */
+}
+
+/* SECCIONES GENERALES:
+   El selector section aplica un espacio inferior
+   a las secciones de la página. */
+
+section {
+    margin-bottom: 70px; /* Separa cada sección de la siguiente mediante un margen inferior. */
+}
+
+/* TITULOS GENERALES:
+   El selector h2 modifica todos los títulos
+   de segundo nivel de la página. */
+
+h2 {
+    margin-bottom: 25px; /* Agrega espacio debajo de cada título h2. */
+}
+
+/* ESTILO DE SELECCION DE TEXTO:
+   El selector ::selection permite cambiar
+   la apariencia del texto cuando el usuario lo selecciona. */
+
+::selection {
+    background: var(--rojo); /* Establece el fondo rojo del texto seleccionado. */
+    color: var(--texto); /* Mantiene el texto seleccionado de color blanco. */
+}
+
+/* BARRA DE DESPLAZAMIENTO:
+   El selector ::-webkit-scrollbar permite personalizar
+   la barra de desplazamiento en navegadores compatibles. */
+
+::-webkit-scrollbar {
+    width: 9px; /* Establece el ancho de la barra de desplazamiento. */
+}
+
+/* FONDO DE LA BARRA DE DESPLAZAMIENTO */
+
+::-webkit-scrollbar-track {
+    background: var(--fondo); /* Establece el fondo negro de la barra. */
+}
+
+/* PARTE DESLIZANTE DE LA BARRA */
+
+::-webkit-scrollbar-thumb {
+    background: var(--rojo-oscuro); /* Establece el color rojo oscuro de la parte deslizante. */
+    border-radius: 10px; /* Redondea las esquinas de la parte deslizante. */
+}
+
+/* EFECTO AL PASAR EL CURSOR SOBRE LA BARRA */
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rojo); /* Cambia el color de la barra a rojo al pasar el cursor. */
+}
+
+/* NOTICIAS:
+   La clase .noticia define el diseño de cada
+   tarjeta o bloque de noticias. */
+
+.noticia {
+    background: var(--panel); /* Establece el fondo oscuro de la noticia. */
+
+    border: 1px solid var(--borde); /* Agrega un borde de un píxel alrededor de la noticia. */
+    border-left: 4px solid var(--rojo); /* Agrega un borde rojo más grueso en el lado izquierdo. */
+
+    border-radius: 10px; /* Redondea las cuatro esquinas de la noticia. */
+
+    padding: 25px; /* Agrega espacio interno entre el contenido y los bordes. */
+
+    transition: transform 0.3s ease,
+                border-color 0.3s ease; /* Suaviza los cambios de posición y color del borde durante 0.3 segundos. */
+}
+
+/* EFECTO HOVER DE LAS NOTICIAS:
+   :hover se activa cuando el cursor pasa
+   sobre una tarjeta de noticia. */
+
+.noticia:hover {
+    transform: translateY(-5px); /* Mueve la noticia 5 píxeles hacia arriba. */
+    border-color: var(--rojo); /* Cambia el color del borde a rojo. */
+}
+
+/* TITULO DE LA NOTICIA:
+   La clase .noticia__titulo aplica estilos
+   al título de cada noticia. */
+
+.noticia__titulo {
+    color: var(--rojo); /* Establece el color rojo para el título. */
+    margin-bottom: 15px; /* Agrega espacio debajo del título. */
+}
+
+/* DESCRIPCION DE LA NOTICIA:
+   La clase .noticia__descripcion modifica
+   el texto descriptivo de cada noticia. */
+
+.noticia__descripcion {
+    color: var(--texto-secundario); /* Establece el color gris para la descripción. */
+}

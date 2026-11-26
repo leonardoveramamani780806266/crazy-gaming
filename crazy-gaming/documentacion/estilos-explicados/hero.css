@@ -1,0 +1,160 @@
+
+/* ========================================
+   BLOQUE: HERO
+   CRAZY TEKKEN
+   ESTILOS DOCUMENTADOS
+======================================== */
+
+/* PORTADA PRINCIPAL:
+   La clase .hero representa la sección inicial
+   que presenta el contenido principal de la página. */
+
+.hero {
+    min-height: 480px; /* Establece una altura mínima de 480 píxeles para la portada. */
+
+    display: flex; /* Activa Flexbox para organizar los elementos internos. */
+    align-items: center; /* Centra verticalmente el contenido de la portada. */
+
+    padding: 60px; /* Agrega 60 píxeles de espacio interno en todos los lados. */
+
+    position: relative; /* Permite posicionar elementos internos tomando esta sección como referencia. */
+    overflow: hidden; /* Oculta cualquier contenido que sobresalga de los límites de la portada. */
+
+    background:
+        linear-gradient(
+            90deg, /* Establece la dirección horizontal del degradado, de izquierda a derecha. */
+            rgba(9, 9, 9, 0.98) 0%, /* Aplica negro casi opaco desde el inicio del degradado. */
+            rgba(9, 9, 9, 0.85) 50%, /* Mantiene un tono negro semitransparente en la mitad. */
+            rgba(80, 0, 15, 0.55) 100% /* Termina con un tono rojizo semitransparente. */
+        ),
+        url("../assets/images/tekken-hero.jpg"); /* Coloca la imagen principal detrás del contenido. */
+
+    background-size: cover; /* Ajusta la imagen para cubrir toda la portada sin deformarla. */
+    background-position: center; /* Centra la imagen dentro de la portada. */
+
+    border: 1px solid var(--rojo-oscuro); /* Agrega un borde rojo oscuro de un píxel alrededor. */
+    border-left: 5px solid var(--rojo); /* Establece un borde rojo más grueso en el lado izquierdo. */
+
+    border-radius: 16px; /* Redondea las esquinas de la portada. */
+
+    box-shadow:
+        0 0 30px rgba(208, 0, 36, 0.15), /* Agrega una sombra roja exterior alrededor de la portada. */
+        inset 0 0 40px rgba(208, 0, 36, 0.08); /* Agrega una sombra roja suave en la parte interior. */
+}
+
+/* CONTENIDO:
+   La clase .hero__contenido agrupa los textos
+   y elementos que aparecen dentro de la portada. */
+
+.hero__contenido {
+    max-width: 680px; /* Limita el ancho del contenido a 680 píxeles. */
+
+    position: relative; /* Permite controlar la posición del contenido respecto a otros elementos. */
+    z-index: 1; /* Coloca el contenido por delante de la imagen y el fondo. */
+}
+
+/* ETIQUETA:
+   La clase .hero__etiqueta identifica el pequeño
+   texto que aparece antes del título principal. */
+
+.hero__etiqueta {
+    display: inline-block; /* Permite aplicar dimensiones y espacios conservando el comportamiento en línea. */
+
+    color: var(--rojo-hover); /* Establece el color rojo brillante de la etiqueta. */
+
+    font-size: 13px; /* Define el tamaño del texto en 13 píxeles. */
+    font-weight: bold; /* Muestra el texto en negrita. */
+    letter-spacing: 3px; /* Agrega 3 píxeles de separación entre las letras. */
+    text-transform: uppercase; /* Convierte el texto a letras mayúsculas. */
+
+    margin-bottom: 15px; /* Agrega 15 píxeles de espacio debajo de la etiqueta. */
+}
+
+/* TITULO:
+   La clase .hero__titulo representa el título
+   principal de la portada. */
+
+.hero__titulo {
+    font-size: clamp(42px, 6vw, 75px); /* Ajusta el tamaño del título al ancho de pantalla, con un mínimo de 42 y un máximo de 75 píxeles. */
+
+    font-weight: 900; /* Aplica un grosor de letra muy alto. */
+    line-height: 1.05; /* Reduce el espacio vertical entre las líneas del título. */
+
+    text-transform: uppercase; /* Convierte las letras del título a mayúsculas. */
+
+    margin-bottom: 20px; /* Agrega 20 píxeles de espacio debajo del título. */
+
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); /* Agrega una sombra oscura para mejorar la visibilidad del título. */
+}
+
+/* PARTE DESTACADA DEL TITULO:
+   El selector span permite cambiar el color
+   de una parte específica del título. */
+
+.hero__titulo span {
+    color: var(--rojo); /* Establece el color rojo para el texto encerrado en span. */
+}
+
+/* SUBTITULO:
+   La clase .hero__subtitulo identifica el texto
+   que aparece debajo del título principal. */
+
+.hero__subtitulo {
+    color: var(--texto); /* Establece el color blanco del subtítulo. */
+    font-size: 22px; /* Define el tamaño del subtítulo en 22 píxeles. */
+    font-weight: bold; /* Muestra el subtítulo en negrita. */
+
+    margin-bottom: 12px; /* Agrega 12 píxeles de espacio debajo del subtítulo. */
+}
+
+/* DESCRIPCION:
+   La clase .hero__descripcion controla el texto
+   descriptivo de la portada. */
+
+.hero__descripcion {
+    color: var(--texto-secundario); /* Establece el color gris del texto descriptivo. */
+
+    font-size: 16px; /* Define el tamaño del texto en 16 píxeles. */
+    line-height: 1.8; /* Aumenta la separación entre las líneas para facilitar la lectura. */
+
+    max-width: 550px; /* Limita el ancho del texto a 550 píxeles. */
+
+    margin-bottom: 30px; /* Agrega 30 píxeles de espacio debajo de la descripción. */
+}
+
+/* BOTON:
+   La clase .hero__boton representa el botón
+   principal que aparece en la portada. */
+
+.hero__boton {
+    display: inline-block; /* Permite aplicar espacios y dimensiones manteniendo el botón en línea. */
+
+    background: var(--rojo); /* Establece el fondo rojo del botón. */
+    color: var(--texto); /* Establece el texto del botón en color blanco. */
+
+    padding: 15px 30px; /* Agrega 15 píxeles de espacio vertical y 30 horizontales. */
+
+    border: 1px solid var(--rojo); /* Agrega un borde rojo de un píxel. */
+    border-radius: 5px; /* Redondea ligeramente las esquinas del botón. */
+
+    font-weight: bold; /* Muestra el texto del botón en negrita. */
+    text-transform: uppercase; /* Convierte el texto del botón a mayúsculas. */
+    letter-spacing: 1px; /* Agrega un píxel de separación entre las letras. */
+
+    box-shadow: 0 5px 20px rgba(208, 0, 36, 0.25); /* Agrega una sombra roja debajo del botón. */
+
+    transition: all 0.3s ease; /* Suaviza todos los cambios visuales durante 0.3 segundos. */
+}
+
+/* EFECTO HOVER:
+   Se activa cuando el usuario coloca
+   el cursor sobre el botón. */
+
+.hero__boton:hover {
+    background: var(--rojo-hover); /* Cambia el fondo del botón a un rojo más brillante. */
+
+    transform: translateY(-4px); /* Mueve el botón 4 píxeles hacia arriba. */
+
+    box-shadow: 0 8px 25px rgba(208, 0, 36, 0.4); /* Aumenta la sombra para destacar el botón al pasar el cursor. */
+}
+s

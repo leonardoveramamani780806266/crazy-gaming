@@ -1,0 +1,201 @@
+
+/* ========================================
+   BLOQUE: PERSONAJES Y TARJETAS
+   CRAZY TEKKEN
+   ESTILOS DOCUMENTADOS
+======================================== */
+
+/* BUSCADOR:
+   La clase .catalogo__buscador representa el campo
+   donde el usuario escribe para buscar personajes. */
+
+.catalogo__buscador {
+    display: block; /* Hace que el buscador se comporte como un elemento de bloque. */
+
+    width: 100%; /* Permite que el buscador ocupe todo el ancho disponible. */
+    max-width: 450px; /* Establece un ancho máximo de 450 píxeles. */
+
+    padding: 14px 18px; /* Agrega 14 píxeles de espacio vertical y 18 horizontales. */
+    margin-bottom: 30px; /* Separa el buscador del catálogo mediante un margen inferior. */
+
+    background: var(--panel); /* Establece el fondo oscuro del buscador. */
+    color: var(--texto); /* Establece el color blanco del texto escrito. */
+
+    border: 1px solid var(--borde); /* Agrega un borde gris de un píxel. */
+    border-radius: 8px; /* Redondea las esquinas del buscador. */
+
+    outline: none; /* Elimina el contorno predeterminado del navegador. */
+
+    transition: 0.3s ease; /* Suaviza los cambios visuales durante 0.3 segundos. */
+}
+
+/* TEXTO DE EJEMPLO DEL BUSCADOR:
+   ::placeholder permite modificar el texto
+   que aparece antes de que el usuario escriba. */
+
+.catalogo__buscador::placeholder {
+    color: var(--texto-secundario); /* Establece el color gris del texto de ejemplo. */
+}
+
+/* BUSCADOR ACTIVO:
+   :focus se activa cuando el usuario selecciona
+   el campo para escribir. */
+
+.catalogo__buscador:focus {
+    border-color: var(--rojo); /* Cambia el borde a rojo cuando el buscador está seleccionado. */
+    box-shadow: 0 0 12px rgba(208, 0, 36, 0.25); /* Agrega un resplandor rojo alrededor del buscador. */
+}
+
+/* CUADRICULA:
+   Estos selectores organizan las tarjetas
+   de personajes en forma de cuadrícula.
+   Se utiliza una clase y un identificador. */
+
+.catalogo__grid,
+#lista-personajes {
+    display: grid; /* Activa CSS Grid para organizar las tarjetas en filas y columnas. */
+
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* Crea cuatro columnas de igual tamaño, permitiendo que se ajusten al espacio disponible. */
+
+    gap: 22px; /* Establece 22 píxeles de separación entre las tarjetas. */
+}
+
+/* TARJETA:
+   La clase .card representa el contenedor
+   individual de cada personaje. */
+
+.card {
+    background: linear-gradient(
+        145deg, /* Establece una dirección diagonal para el degradado. */
+        #202020, /* Define el color gris oscuro inicial del fondo. */
+        #0c0c0c /* Define el color casi negro final del fondo. */
+    );
+
+    border: 1px solid #333333; /* Agrega un borde gris oscuro de un píxel. */
+    border-radius: 12px; /* Redondea las esquinas de la tarjeta. */
+
+    overflow: hidden; /* Oculta los elementos que sobresalgan de los límites de la tarjeta. */
+    position: relative; /* Permite posicionar elementos internos respecto a la tarjeta. */
+
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease; /* Suaviza los cambios de posición, borde y sombra durante 0.3 segundos. */
+}
+
+/* EFECTO HOVER:
+   Se activa cuando el cursor pasa
+   sobre una tarjeta de personaje. */
+
+.card:hover {
+    transform: translateY(-8px); /* Mueve la tarjeta 8 píxeles hacia arriba. */
+
+    border-color: var(--rojo); /* Cambia el color del borde a rojo. */
+
+    box-shadow: 0 10px 30px rgba(208, 0, 36, 0.25); /* Agrega una sombra roja debajo de la tarjeta. */
+}
+
+/* IMAGEN:
+   La clase .card__imagen controla el tamaño
+   y la apariencia de la imagen del personaje. */
+
+.card__imagen {
+    width: 100%; /* Hace que la imagen ocupe todo el ancho de la tarjeta. */
+    height: 280px; /* Establece una altura de 280 píxeles para la imagen. */
+
+    display: block; /* Hace que la imagen se comporte como un elemento de bloque. */
+
+    object-fit: cover; /* Ajusta la imagen para cubrir el espacio sin deformarla. */
+    object-position: center top; /* Prioriza la parte superior y central de la imagen al recortarla. */
+
+    background: #111111; /* Establece un fondo oscuro mientras carga la imagen o si no cubre todo el espacio. */
+
+    transition: transform 0.4s ease; /* Suaviza los cambios de tamaño de la imagen durante 0.4 segundos. */
+}
+
+/* EFECTO DE LA IMAGEN:
+   Este selector combina la tarjeta .card
+   con su imagen .card__imagen. */
+
+.card:hover .card__imagen {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño de la imagen al pasar el cursor sobre la tarjeta. */
+}
+
+/* CONTENIDO:
+   La clase .card__contenido contiene los textos
+   y la información de cada personaje. */
+
+.card__contenido {
+    padding: 20px; /* Agrega 20 píxeles de espacio interno alrededor del contenido. */
+}
+
+/* NOMBRE:
+   La clase .card__titulo representa el nombre
+   del personaje dentro de la tarjeta. */
+
+.card__titulo {
+    color: var(--texto); /* Establece el color blanco del nombre. */
+
+    font-size: 20px; /* Define el tamaño del nombre en 20 píxeles. */
+    font-weight: 900; /* Aplica un grosor de letra muy alto. */
+
+    text-transform: uppercase; /* Convierte el nombre a letras mayúsculas. */
+
+    margin-bottom: 14px; /* Agrega espacio debajo del nombre. */
+
+    border-bottom: 2px solid var(--rojo); /* Agrega una línea roja debajo del nombre. */
+
+    padding-bottom: 10px; /* Separa el texto de la línea inferior mediante 10 píxeles. */
+}
+
+/* INFORMACION:
+   La clase .card__genero se utiliza para mostrar
+   los datos descriptivos del personaje. */
+
+.card__genero {
+    color: var(--texto-secundario); /* Establece el color gris de la información. */
+
+    font-size: 13px; /* Define el tamaño del texto en 13 píxeles. */
+    line-height: 1.7; /* Establece la separación vertical entre las líneas de texto. */
+
+    margin-bottom: 8px; /* Agrega 8 píxeles de espacio debajo de cada párrafo. */
+}
+
+/* INFORMACION DESTACADA:
+   El selector strong modifica los textos importantes
+   que se encuentran dentro de .card__genero. */
+
+.card__genero strong {
+    color: var(--rojo-hover); /* Establece un color rojo brillante para destacar las etiquetas de información. */
+}
+
+/* TABLETS:
+   @media permite aplicar estilos cuando el ancho
+   de la pantalla cumple una condición específica. */
+
+@media (max-width: 1024px) { /* Aplica estas reglas cuando la pantalla mide 1024 píxeles o menos. */
+
+    .catalogo__grid,
+    #lista-personajes {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Cambia el catálogo a dos columnas iguales. */
+    }
+}
+
+/* CELULARES:
+   Estas reglas adaptan las tarjetas a pantallas
+   pequeñas para facilitar su visualización. */
+
+@media (max-width: 600px) { /* Aplica estas reglas cuando la pantalla mide 600 píxeles o menos. */
+
+    .catalogo__grid,
+    #lista-personajes {
+        grid-template-columns: 1fr; /* Organiza las tarjetas en una sola columna. */
+    }
+
+    .card__imagen {
+        height: 320px; /* Aumenta la altura de las imágenes a 320 píxeles en celulares. */
+    }
+
+    .card__contenido {
+        padding: 18px; /* Reduce el espacio interno del contenido a 18 píxeles. */
+    }
+}

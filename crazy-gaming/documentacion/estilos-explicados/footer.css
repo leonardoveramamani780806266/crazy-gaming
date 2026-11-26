@@ -1,0 +1,210 @@
+
+/* ========================================
+   BLOQUE: FOOTER
+   CRAZY TEKKEN
+   ESTILOS DOCUMENTADOS
+======================================== */
+
+/* CONTENEDOR PRINCIPAL:
+   La clase .footer representa el pie de página,
+   ubicado al final del sitio web. */
+
+.footer {
+    background: #080808; /* Establece un fondo de color negro oscuro. */
+
+    text-align: center; /* Centra horizontalmente los textos y elementos en línea. */
+
+    padding: 45px 25px 25px; /* Agrega 45 píxeles arriba, 25 a los lados y 25 abajo. */
+
+    border-top: 2px solid var(--rojo); /* Agrega una línea roja de 2 píxeles en la parte superior. */
+
+    box-shadow: 0 -5px 25px rgba(208, 0, 36, 0.08); /* Agrega una sombra roja suave hacia la parte superior del footer. */
+}
+
+/* MARCA:
+   La clase .footer__marca agrupa los elementos
+   que representan la identidad del sitio web. */
+
+.footer__marca {
+    margin-bottom: 15px; /* Agrega 15 píxeles de espacio debajo de la marca. */
+}
+
+/* LOGOTIPO:
+   La clase .footer__logo identifica el nombre
+   o logotipo de Crazy Tekken. */
+
+.footer__logo {
+    color: var(--texto); /* Establece el color blanco del logotipo. */
+
+    font-size: 28px; /* Define el tamaño del texto en 28 píxeles. */
+    font-weight: 900; /* Aplica un grosor de letra muy alto. */
+    letter-spacing: 2px; /* Agrega 2 píxeles de separación entre las letras. */
+
+    text-transform: uppercase; /* Convierte el texto del logotipo a mayúsculas. */
+}
+
+/* PARTE DESTACADA DEL LOGOTIPO:
+   El selector span permite cambiar el estilo
+   de una parte específica del nombre. */
+
+.footer__logo span {
+    color: var(--rojo); /* Establece el color rojo para el texto encerrado en span. */
+}
+
+/* DESCRIPCION:
+   La clase .footer__descripcion contiene
+   el texto informativo del pie de página. */
+
+.footer__descripcion {
+    color: var(--texto-secundario); /* Establece el color gris del texto descriptivo. */
+
+    font-size: 14px; /* Define el tamaño del texto en 14 píxeles. */
+
+    max-width: 550px; /* Limita el ancho de la descripción a 550 píxeles. */
+
+    margin: 10px auto 25px; /* Agrega 10 píxeles arriba, centra horizontalmente y deja 25 abajo. */
+
+    line-height: 1.7; /* Establece la separación vertical entre las líneas del texto. */
+}
+
+/* NAVEGACION:
+   La clase .footer__nav representa el menú
+   de enlaces ubicado en el pie de página. */
+
+.footer__nav {
+    display: flex; /* Activa Flexbox para organizar los enlaces. */
+
+    justify-content: center; /* Centra horizontalmente los enlaces. */
+    align-items: center; /* Centra verticalmente los elementos. */
+
+    flex-wrap: wrap; /* Permite que los enlaces pasen a otra línea si no hay espacio suficiente. */
+    gap: 25px; /* Establece 25 píxeles de separación entre los enlaces. */
+
+    margin-bottom: 30px; /* Agrega 30 píxeles de espacio debajo del menú. */
+}
+
+/* ENLACES:
+   Este selector modifica los enlaces a
+   que se encuentran dentro de .footer__nav. */
+
+.footer__nav a {
+    color: var(--texto-secundario); /* Establece el color gris de los enlaces. */
+
+    font-size: 13px; /* Define el tamaño del texto en 13 píxeles. */
+    font-weight: bold; /* Muestra los enlaces en negrita. */
+
+    text-transform: uppercase; /* Convierte el texto de los enlaces a mayúsculas. */
+
+    transition: color 0.3s ease; /* Suaviza los cambios de color durante 0.3 segundos. */
+}
+
+/* EFECTO HOVER DE LOS ENLACES:
+   Se activa cuando el cursor pasa
+   sobre un enlace del menú. */
+
+.footer__nav a:hover {
+    color: var(--rojo-hover); /* Cambia el color del enlace a rojo brillante. */
+}
+
+/* COPYRIGHT:
+   La clase .footer__copyright contiene
+   el aviso de derechos reservados. */
+
+.footer__copyright {
+    padding-top: 20px; /* Agrega 20 píxeles de espacio antes del texto. */
+
+    border-top: 1px solid var(--borde); /* Agrega una línea gris de un píxel encima del copyright. */
+
+    color: #777777; /* Establece un color gris para el texto. */
+
+    font-size: 12px; /* Define el tamaño del texto en 12 píxeles. */
+}
+
+/* AVISO:
+   La clase .footer__aviso contiene información
+   adicional sobre el sitio web. */
+
+.footer__aviso {
+    color: #555555; /* Establece un color gris oscuro para el aviso. */
+
+    font-size: 11px; /* Define el tamaño del texto en 11 píxeles. */
+
+    margin-top: 10px; /* Agrega 10 píxeles de espacio encima del aviso. */
+}
+
+
+/* ========================================
+   BLOQUE ADICIONAL DEL FOOTER
+   ESTILOS ANTERIORES
+======================================== */
+
+/* CONTENEDOR PRINCIPAL DEL FOOTER:
+   Esta regla vuelve a definir la clase .footer.
+   Al encontrarse después de la primera definición,
+   algunas propiedades anteriores son reemplazadas. */
+
+.footer {
+    background: #080808; /* Mantiene el fondo negro del pie de página. */
+    padding: 40px 20px 20px; /* Reemplaza el espacio interno anterior por 40 píxeles arriba, 20 a los lados y 20 abajo. */
+    text-align: center; /* Centra horizontalmente el contenido. */
+    border-top: 1px solid #8000ff; /* Reemplaza el borde superior rojo por uno violeta de un píxel. */
+}
+
+/* CONTENIDO DEL FOOTER:
+   La clase .footer__contenido organiza
+   los elementos internos del pie de página. */
+
+.footer__contenido {
+    display: flex; /* Activa Flexbox para organizar los elementos. */
+    justify-content: center; /* Centra horizontalmente los elementos. */
+    align-items: center; /* Centra verticalmente los elementos. */
+}
+
+/* MARCA:
+   Esta segunda definición vuelve a modificar
+   la clase .footer__marca. */
+
+.footer__marca {
+    display: flex; /* Organiza los elementos internos mediante Flexbox. */
+    flex-direction: column; /* Coloca los elementos uno debajo del otro. */
+    align-items: center; /* Centra horizontalmente los elementos. */
+    gap: 10px; /* Establece 10 píxeles de separación entre los elementos. */
+}
+
+/* LOGOTIPO:
+   Esta segunda definición agrega propiedades
+   para mostrar un logotipo como imagen. */
+
+.footer__logo {
+    width: 150px; /* Establece un ancho de 150 píxeles. */
+    height: auto; /* Ajusta automáticamente la altura para conservar las proporciones. */
+    object-fit: contain; /* Ajusta el contenido para que se vea completo sin deformarse. */
+    transition: transform 0.3s ease; /* Suaviza las transformaciones durante 0.3 segundos. */
+}
+
+/* EFECTO HOVER DEL LOGOTIPO */
+
+.footer__logo:hover {
+    transform: scale(1.05); /* Aumenta el tamaño del logotipo un 5% al pasar el cursor. */
+}
+
+/* DESCRIPCION:
+   Esta segunda definición modifica el color
+   y el tamaño del texto descriptivo. */
+
+.footer__descripcion {
+    color: #bdbdbd; /* Establece un color gris claro para la descripción. */
+    font-size: 14px; /* Define el tamaño del texto en 14 píxeles. */
+}
+
+/* DERECHOS RESERVADOS:
+   Esta segunda definición vuelve a modificar
+   la apariencia del texto de copyright. */
+
+.footer__copyright {
+    color: #777; /* Establece un color gris para el texto. */
+    font-size: 12px; /* Define el tamaño del texto en 12 píxeles. */
+    margin-top: 25px; /* Agrega 25 píxeles de espacio encima del copyright. */
+    padding-top: 15px; /* Agrega 15 píxeles de espacio interno superior. */
+    border-top: 1px solid #292929; /* Agrega una línea gris oscura encima del copyright. */
+}
